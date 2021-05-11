@@ -22,13 +22,7 @@
 
 <body>
     <div id="app">
-   
-        <dash url_logout="{{url('/logout')}}" user='{{ Auth::user()->name }}'>
-            <template slot="content">
-                <h1>Teste</h1>
-                @yield('content')
-            </template>
-        </dash>
+        @yield('content')
     </div>
 </body>
 

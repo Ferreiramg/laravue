@@ -32,83 +32,51 @@
         >
 
         <md-list>
-          <md-list-item>
-            <md-icon>move_to_inbox</md-icon>
-            <span class="md-list-item-text">Inbox</span>
+          <md-list-item md-expand >
+            <md-icon>whatshot</md-icon>
+            <span class="md-list-item-text">ACL</span>
+
+            <md-list slot="md-expand">
+              <md-list-item @click="addPerm" class="md-inset">ADD Permission</md-list-item>
+              <md-list-item @click="addGroup" class="md-inset">Groups</md-list-item>
+              <md-list-item @click="addUserGroup" class="md-inset">User Groups</md-list-item>
+              <md-list-item @click="addRole" class="md-inset">Role</md-list-item>
+            </md-list>
+          </md-list-item>
+
+          <md-list-item md-expand>
+            <md-icon>videogame_asset</md-icon>
+            <span class="md-list-item-text">Games</span>
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">Console</md-list-item>
+              <md-list-item class="md-inset">PC</md-list-item>
+              <md-list-item class="md-inset">Phone</md-list-item>
+            </md-list>
+          </md-list-item>
+
+          <md-list-item md-expand>
+            <md-icon>video_library</md-icon>
+            <span class="md-list-item-text">Video</span>
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">Humor</md-list-item>
+              <md-list-item class="md-inset">Music</md-list-item>
+              <md-list-item class="md-inset">Movies</md-list-item>
+              <md-list-item class="md-inset">TV Shows</md-list-item>
+            </md-list>
           </md-list-item>
 
           <md-list-item>
-            <md-icon>send</md-icon>
-            <span class="md-list-item-text">Sent Mail</span>
-          </md-list-item>
-
-          <md-list-item>
-            <md-icon @click="toggle">delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
-          </md-list-item>
-
-          <md-list-item>
-            <md-icon>error</md-icon>
-            <span class="md-list-item-text">Spam</span>
+            <md-icon>shopping_basket</md-icon>
+            <span class="md-list-item-text">Shop</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
 
       <md-app-content>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          quibusdam, non molestias et! Earum magnam, similique, quo recusandae
-          placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-          explicabo, neque.
-        </p>
+        <slot name="content"></slot>
+      
       </md-app-content>
     </md-app>
   </div>
@@ -122,7 +90,7 @@
 
 .md-drawer {
   width: 230px;
-  max-width: calc(100vw - 125px);
+  height: calc(100vw - 125px);
 }
 .md-menu,
 .toggle {
@@ -140,8 +108,22 @@ export default {
     toggle() {
       alert("Clicado");
     },
+    addPerm() {
+      window.location.href = "/permission/add";
+    },
+    addGroup() {
+      window.location.href = "/group/add";
+    },
+    addUserGroup() {
+      window.location.href = "/group/user/add";
+    },
+    addRole() {
+      window.location.href = "/role/add";
+    },
     logout() {
-      requestPost(this.url_logout, {}).then((json) => window.location.href = '/home');
+      requestPost(this.url_logout, {}).then(
+        (json) => (window.location.href = "/home")
+      );
     },
   },
   props: {

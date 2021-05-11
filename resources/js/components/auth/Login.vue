@@ -38,9 +38,7 @@
         </md-field>
         <div class="actions md-layout md-alignment-center-space-between">
           <a href="redirect"> Forgot Your Password? </a>
-          <md-button @click="auth" type="button" class="md-raised md-primary"
-            >Log in</md-button
-          >
+          <md-button @click="auth" type="button" class="md-raised md-primary">Log in</md-button>
         </div>
       </form>
 
@@ -78,12 +76,11 @@ export default {
       this.loading = true;
       requestPost(this.post, this.login).then((resp) => {
         if (resp.status !== 200) {
-          this.loading = false;
-          this.login = { ...resp.json() };
           return null;
         }
         window.location.href = "/home";
       });
+      this.loading = false;
       event.preventDefault();
       return null;
     },

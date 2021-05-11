@@ -11,6 +11,7 @@ import 'vue-material/dist/theme/default.css'
 
 import DashBoard from './components/DashBoard';
 import Login from './components/auth/Login';
+import PermForm from './components/perm/PermForm';
 require('./bootstrap');
 
 //window.Vue = require('vue').default;
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('dash', DashBoard);
+Vue.component('add-perm', PermForm);
 Vue.component('login-app', Login);
 
 /**
