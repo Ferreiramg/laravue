@@ -1979,6 +1979,9 @@ __webpack_require__.r(__webpack_exports__);
     addRole: function addRole() {
       window.location.href = "/role/add";
     },
+    admAccess: function admAccess() {
+      window.location.href = "/adm";
+    },
     logout: function logout() {
       requestPost(this.url_logout, {}).then(function (json) {
         return window.location.href = "/home";
@@ -2311,7 +2314,7 @@ window.requestPost = /*#__PURE__*/function () {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
               },
               method: "post",
               credentials: "same-origin",
@@ -32204,9 +32207,14 @@ var render = function() {
                     [
                       _c("md-icon", [_vm._v("shopping_basket")]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "md-list-item-text" }, [
-                        _vm._v("Shop")
-                      ])
+                      _c(
+                        "span",
+                        {
+                          staticClass: "md-inset",
+                          on: { click: _vm.admAccess }
+                        },
+                        [_vm._v("ADMIN AREA")]
+                      )
                     ],
                     1
                   )

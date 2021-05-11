@@ -69,7 +69,7 @@
 
           <md-list-item>
             <md-icon>shopping_basket</md-icon>
-            <span class="md-list-item-text">Shop</span>
+            <span @click="admAccess" class="md-inset">ADMIN AREA</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
@@ -119,6 +119,9 @@ export default {
     },
     addRole() {
       window.location.href = "/role/add";
+    },
+    admAccess() {
+      window.location.href = "/adm";
     },
     logout() {
       requestPost(this.url_logout, {}).then(

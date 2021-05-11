@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Junges\ACL\Http\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('app');
+    }
+    public function admin()
+    {
+        var_dump(Auth::user()->hasPermission(Permission::find(2)));
+        return view('admin.admin');
     }
 }

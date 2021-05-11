@@ -28,7 +28,7 @@ window.requestPost = async (url, form) => {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
             },
             method: "post",
             credentials: "same-origin",

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/adm', [Controllers\HomeController::class, 'admin'])->middleware('permissions:ver')->name('admin');
+
 Route::get('/permission/add', [Controllers\ACLController::class, 'permission'])->name('perm.add');
 Route::get('/role/add', [Controllers\ACLController::class, 'role'])->name('role.add');
 Route::get('/group/add', [Controllers\ACLController::class, 'group'])->name('group.add');
 Route::get('/group/user/add', [Controllers\ACLController::class, 'usersGroup'])->name('user-group.add');
-Route::post('/group/user/save', [Controllers\ACLController::class, 'usersGroupSave'])->name('user-group.save');
+Route::post('/user/save', [Controllers\ACLController::class, 'usersGroupSave'])->name('user-group.save');
 Route::post('/group/save', [Controllers\ACLController::class, 'groupSave'])->name('group.save');
 Route::post('/permission/save', [Controllers\ACLController::class, 'permSave'])->name('perm.save');
 Route::post('/role/save', [Controllers\ACLController::class, 'roleSave'])->name('role.save');

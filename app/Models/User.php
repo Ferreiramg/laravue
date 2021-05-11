@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Junges\ACL\Traits\UsersTrait;
+use Junges\ACL\Traits\ACLWildcardsTrait;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, UsersTrait;
+    use  HasFactory, Notifiable, UsersTrait;
 
     /**
      * The attributes that are mass assignable.

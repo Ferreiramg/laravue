@@ -25,7 +25,7 @@
    
         <dash url_logout="{{url('/logout')}}" user='{{ Auth::user()->name }}'>
             <template slot="content">
-                <h1>Teste</h1>
+                 {!! Auth::user()->getAllPermissions() !!}
                 @yield('content')
             </template>
         </dash>

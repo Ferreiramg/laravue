@@ -33,28 +33,30 @@ class ACLController extends Controller
 
     public function usersGroupSave(Request $request)
     {
-        $user = User::find($request->input('id'));
-        $user->syncGroups($request->input('groups'));
+        $user = User::find($request->input('user'));
+        $user->assignGroup($request->input('groups'));
         $user->save();
         return response()->json(['message' => 'Success']);
     }
 
+    //permissão de grupos
     public function groupSave(Request $request)
     {
         $group = new Group();
         $group->name = $request->input('name');
         $group->slug = $request->input('slug');
         $group->description = $request->input('description');
-        $group->syncPermissions($request->input('permissions'));
         $group->save();
+
+        $group->assignPermissions($request->input('permissions'));
 
         return response()->json(['message' => $group]);
     }
 
     public function permSave(Request $request)
     {
-        $user = User::where('id', $request->input('id'))->first();
-        $user->syncPermissions($request->input('permissions'));
+        $user = User::find($request->input('user'));
+        $user->assignPermissions($request->input('permissions'));
         $user->save();
         return response()->json(['message' => 'Success']);
     }
