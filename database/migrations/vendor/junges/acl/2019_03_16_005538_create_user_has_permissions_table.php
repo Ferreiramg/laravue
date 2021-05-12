@@ -13,11 +13,14 @@ class CreateUserHasPermissionsTable extends Migration
      */
     public function up()
     {
-        $userHasPermissionTable = config('acl.tables.user_has_permissions',
-            'user_has_permissions');
+        $userHasPermissionTable = config(
+            'acl.tables.user_has_permissions',
+            'user_has_permissions'
+        );
         $permissionsTable = config('acl.tables.permissions', 'permissions');
         $usersTable = config('acl.tables.users', 'users');
-        Schema::create($userHasPermissionTable,
+        Schema::create(
+            $userHasPermissionTable,
             function (Blueprint $table) use ($permissionsTable, $usersTable) {
                 $table->bigInteger('user_id', false, true);
                 $table->bigInteger('permission_id', false, true);
@@ -30,7 +33,8 @@ class CreateUserHasPermissionsTable extends Migration
                     ->on($permissionsTable)
                     ->onDelete('cascade');
                 $table->primary(['user_id', 'permission_id']);
-            });
+            }
+        );
     }
 
     /**

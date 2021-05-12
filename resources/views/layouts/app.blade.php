@@ -22,14 +22,20 @@
 
 <body>
     <div id="app">
-   
+
         <dash url_logout="{{url('/logout')}}" user='{{ Auth::user()->name }}'>
-            <template slot="content">
-                 {!! Auth::user()->getAllPermissions() !!}
+            <template slot="content">             
                 @yield('content')
             </template>
         </dash>
     </div>
+    <script>
+        @auth
+        window.Permissions = {!!json_encode(Auth::user()->allPermissions, true) !!};
+        @else
+        window.Permissions = [];
+        @endauth
+    </script>
 </body>
 
 </html>

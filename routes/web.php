@@ -19,6 +19,10 @@ use Illuminate\Routing\RouteGroup;
 Route::get('/', function () {
     return view('app');
 });
+Route::get('menus', [Controllers\ModuloController::class, 'index']);
+Route::get('menus-json', [Controllers\ModuloController::class, 'recursiveJsonMenu']);
+Route::get('menus-show', [Controllers\ModuloController::class, 'show']);
+Route::post('menus', [Controllers\ModuloController::class, 'store'])->name('menus.store');
 
 Auth::routes();
 

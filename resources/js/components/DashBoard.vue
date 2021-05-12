@@ -27,9 +27,7 @@
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible">
-        <md-toolbar class="md-transparent" md-elevation="0"
-          >Navigation</md-toolbar
-        >
+        <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
 
         <md-list>
           <md-list-item md-expand >
@@ -44,7 +42,7 @@
             </md-list>
           </md-list-item>
 
-          <md-list-item md-expand>
+          <md-list-item  md-expand>
             <md-icon>videogame_asset</md-icon>
             <span class="md-list-item-text">Games</span>
 

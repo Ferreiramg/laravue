@@ -12,6 +12,7 @@ import 'vue-material/dist/theme/default.css'
 import DashBoard from './components/DashBoard';
 import Login from './components/auth/Login';
 import PermForm from './components/perm/PermForm';
+import Permissions from './mixins/Permissions';
 require('./bootstrap');
 
 //window.Vue = require('vue').default;
@@ -34,6 +35,8 @@ Vue.component('dash', DashBoard);
 Vue.component('add-perm', PermForm);
 Vue.component('login-app', Login);
 
+
+Vue.mixin(Permissions);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
